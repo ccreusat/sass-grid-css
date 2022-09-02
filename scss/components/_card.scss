@@ -1,10 +1,31 @@
-@use "../tokens";
+@use "../abstracts" as *;
 
-$card-background-color: tokens.$primary !default;
+$card-border-radius: 1.5rem !default;
+$card-background-color: #faf7fa !default;
+$card-box-shadow: none !default;
 
 .card {
-  width: 400px;
-  height: 200px;
-  margin: 0 auto;
-  background-color: $card-background-color;
+  --#{$prefix}card-border-radius: #{$card-border-radius};
+  --#{$prefix}card-background-color: #{$card-background-color};
+  --#{$prefix}card-box-shadow: #{$card-box-shadow};
+
+  border-radius: var(--#{$prefix}card-border-radius);
+  background-color: #faf7fa;
+  background-image: linear-gradient(#fdeae3, #fdeae3),
+    linear-gradient(#ff8d2e, #ff8d2e), linear-gradient(#f1d6c3, #f1d6c3),
+    linear-gradient(
+      90deg,
+      transparent 20px,
+      #f9e5c7 0,
+      #f9e5c7 calc(100% - 20px),
+      transparent 0
+    );
+  background-size: 100% 50px, 50px 10px, 60px 10px, auto 50px;
+  background-position: 0 0, 20px 80px, 20px 100px, left 0 bottom 20px;
+  background-repeat: no-repeat;
+  box-shadow: var(--#{$prefix}card-box-shadow);
+
+  .one & {
+    --#{$prefix}card-box-shadow: #{$shadow-one};
+  }
 }

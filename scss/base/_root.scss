@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700;800&display=swap");
+
+html {
+  font-size: 62.5%; // 10 / 16 = 62.5%
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  font-size: 1.6rem;
+  background: linear-gradient(
+    -45deg,
+    #ff9f4d 10%,
+    #ffc857 0,
+    #ffc857 90%,
+    #ff9f4d 0,
+    #ff9f4d 100%
+  );
+  background: url(../images/hills.svg) center / cover no-repeat;
+  background-size: cover;
+  background-color: #a6ce3a;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}

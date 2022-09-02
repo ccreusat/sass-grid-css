@@ -1,0 +1,45 @@
+@use "../abstracts/" as *;
+@use "sass:math";
+
+$flex-gap: 1.6rem;
+$flex-grid-with: 100%;
+$flex-default-columns: 12;
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: $flex-gap;
+  //   gap: $flex-gap;
+  margin-inline: calc($flex-gap / -2);
+
+  > * {
+    flex-basis: 0;
+    padding-inline: calc($flex-gap / 2);
+  }
+
+  @each $key, $breakpoint in $breakpoints {
+    @if $key == "xs" {
+      @for $i from 1 through $flex-default-columns {
+        .col-#{$i} {
+          flex-basis: calc($flex-grid-with / $flex-default-columns * $i);
+          min-width: calc($flex-grid-with / $flex-default-columns * $i);
+        }
+        .col-offset-#{$i} {
+          margin-left: calc($flex-grid-with / $flex-default-columns * $i);
+        }
+      }
+    } @else {
+      @media (min-width: $breakpoint) {
+        @for $i from 1 through $flex-default-columns {
+          .col-#{$key}-#{$i} {
+            flex-basis: calc($flex-grid-with / $flex-default-columns * $i);
+            min-width: calc($flex-grid-with / $flex-default-columns * $i);
+          }
+          .col-#{$key}-offset-#{$i} {
+            margin-left: calc($flex-grid-with / $flex-default-columns * $i);
+          }
+        }
+      }
+    }
+  }
+}
